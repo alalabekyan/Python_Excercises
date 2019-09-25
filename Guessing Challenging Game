@@ -1,0 +1,56 @@
+import random
+win_number = random.randint(1,100)
+
+print ("----------")
+print (" Welcom to Guessing Challenging Game")
+print ("----------")
+print ("-- How to Play : ")
+print ("-- It's simple , the game will genrate a number in the range of 0 to 100")
+print ("-- - and you will be asked to enter a number.")
+print ("-- - if your number matches the genrated number, 'YOU WIN !!'")
+print ("-- - otherwise , the game will help you how far you are to reach the number")
+print ()
+print ("-- Enjoy !! --")
+print ()
+print ("Win Number is",win_number)
+
+list_guesses = [0]
+       
+while True:
+    #Player will enter it's guess
+    player_guess = int(input("What is your Guess? "))
+    
+    #First Rule : Check the input , if it's within the range of 1- 100
+    if player_guess < 1 or player_guess > 100:
+        print("--- !!! ---")
+        print("The input number is not in valid range")
+        continue
+    
+    if player_guess == win_number:
+        print("------------------------------")
+        print("--- !!! Congratualtion !!! ---")
+        print("--- You Win the Challqange ---")
+        print("------------------------------")
+        break
+    # Append the input to list of guesses
+    list_guesses.append(player_guess)
+    
+    # Check the Warm and Cold of First Guess
+    if list_guesses[-2]:
+        if abs(win_number - player_guess) < abs(win_number - list_guesses[-2]):
+            print ("Your Guess is Closer to Winning Number")
+        else:
+            print ("You are getting '!!! Far !!!' from the Winning Number")
+    else:
+        if abs(win_number - player_guess) <= 10 :
+            print (" Your Guess is Warm")
+        else:
+            print (" Your Guess is Cold")
+    
+    
+    print (list_guesses)
+    print ("Win number",win_number," - ","Player guess",player_guess,"=",abs(win_number-player_guess)," < Win number",win_number,"- 1 number before current guess",list_guesses[-2],"=",abs(win_number-list_guesses[-2]))
+    print ("Condition",(win_number - player_guess) < abs(win_number - list_guesses[-2]))
+    print ("Win number",win_number," - ","player guess",player_guess,"=",abs(win_number-player_guess),"<=10")
+    print ("Condition",abs(win_number - player_guess) <= 10 )
+    
