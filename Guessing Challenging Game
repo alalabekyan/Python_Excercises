@@ -28,7 +28,7 @@ while True:
     
     if player_guess == win_number:
         print("------------------------------")
-        print("--- !!! Congratualtion !!! ---")
+        print("--- !!  Congratulations !! ---")
         print("--- You Win the Challqange ---")
         print("------------------------------")
         break
